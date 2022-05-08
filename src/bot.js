@@ -20,23 +20,10 @@ class Bot extends Client {
     bot.sentry = Sentry;
     bot.commands = new Collection();
     bot.config = config;
-    bot.config.reactEmojis = {
-      delete: '❌',
-      edit: '📝',
-      whoIsIt: '❓',
-      pin: '📌',
-    };
     bot.db = require('./database/mongoose');
     bot.logger = require('./util/logger');
     bot.tools = require('./util/helpers');
     bot.embed = require('./util/embed');
-    bot.recent = {};
-    bot.dialog = {};
-    try {
-      bot.blacklist = new Set(JSON.parse(require('./config/blacklist.json')));
-    } catch (e) {
-      bot.blacklist = new Set();
-    }
 
     require('./modules/util')(bot);
     require('./modules/server')(bot);
@@ -61,16 +48,6 @@ class Bot extends Client {
       const command = require(`./commands/${file}`);
       bot.commands.set(command.data.name, command);
     }
-
-    const slashCommandFiles = fs
-      .readdirSync(`./src/commands/slash_commands/`)
-      .filter((file) => file.endsWith('.js'));
-    for (const file of slashCommandFiles) {
-      const command = require(`./commands/slash_commands/${file}`);
-      bot.commands.set(command.data.name, command);
-    }
-
-    await bot.db.init();
     bot.login(process.env.TOKEN);
   }
 }

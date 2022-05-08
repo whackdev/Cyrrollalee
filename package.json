@@ -11,7 +11,8 @@
     "express": "^4.17.3",
     "ioredis": "^5.0.4",
     "moment": "^2.29.1",
-    "mongoose": "^6.2.7"
+    "mongoose": "^6.2.7",
+    "node-fetch": "^2.6.1"
   },
   "name": "cyrrollalee",
   "version": "1.0.0",

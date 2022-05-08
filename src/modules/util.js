@@ -4,6 +4,7 @@ module.exports = (bot) => {
   bot.cooldowns = {};
 
   bot.err = (msg, error, tell = true) => {
+    
     if (
       error.message.startsWith('Request timed out') ||
       error.code == 500 ||

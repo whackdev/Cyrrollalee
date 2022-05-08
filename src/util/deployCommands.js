@@ -7,12 +7,12 @@ const { guildID, clientId } = require('../config/config.json');
 
 const commands = [];
 const commandFiles = fs
-  .readdirSync('./src/commands/slash_commands/')
+  .readdirSync('./src/commands/')
   .filter((file) => file.endsWith('.js'));
 
 for (const file of commandFiles) {
-  const command = require(`../commands/slash_commands/${file}`);
-  console.log(`Loading file: ${file}`);
+  const command = require(`../commands/${file}`);
+
   commands.push(command.data.toJSON());
 }
 

@@ -8,7 +8,7 @@ module.exports = {
    * @param {Client} bot
    */
   async execute(bot) {
-    bot.user.setActivity('social butterfly across Êlaelin', {
+    bot.user.setActivity('Lord of the Skies over Êlaelin', {
       type: 'PLAYING',
     });
     const configChannelID = bot.config.configChannel;
@@ -21,10 +21,10 @@ module.exports = {
       const webhook = webhooks.get(bot.config.webhookID);
 
       if (!webhook) {
-        await channel.createWebhook('cyrrollaleeHook', {
+        await channel.createWebhook('talosHook', {
           channel: configChannel,
         });
-        webhook = await channel.fetchWebhooks().get('cyrrollaleeHook');
+        webhook = await channel.fetchWebhooks().get('talosHook');
         if (!webhook) {
           console.error('Unable to locate or create useable webhook');
         }
